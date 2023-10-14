@@ -1,17 +1,16 @@
 package com.example.preassignment.company.entity;
 
+import com.example.preassignment.company.dto.request.CompanyUpdateRequestDto;
 import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
@@ -43,5 +42,12 @@ public class Company {
         this.reward = reward;
         this.content = content;
         this.tech = tech;
+    }
+
+    public void companyUpdate(CompanyUpdateRequestDto requestDto){
+        this.position = requestDto.getPosition();
+        this.reward = requestDto.getReward();
+        this.content = requestDto.getContent();
+        this.tech = requestDto.getTech();
     }
 }
