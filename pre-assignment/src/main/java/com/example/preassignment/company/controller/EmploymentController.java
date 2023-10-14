@@ -7,10 +7,13 @@ import com.example.preassignment.company.service.EmploymentService;
 import java.net.URI;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -37,6 +40,12 @@ public class EmploymentController {
     @PutMapping
     public ResponseEntity<Void> update(@RequestBody EmploymentUpdateRequestDto requestDto){
         employmentService.update(requestDto);
+        return ResponseEntity.ok().build();
+    }
+
+    @DeleteMapping("/{employmentId}")
+    public ResponseEntity<Void> delete(@PathVariable Long employmentId){
+        employmentService.delete(employmentId);
         return ResponseEntity.ok().build();
     }
 }
