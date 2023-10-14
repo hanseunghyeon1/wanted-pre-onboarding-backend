@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
@@ -21,4 +22,9 @@ public class Company {
     private UUID companyId;
 
     private String info;
+
+    @Builder
+    public Company(String info) {
+        this.info = info;
+    }
 }

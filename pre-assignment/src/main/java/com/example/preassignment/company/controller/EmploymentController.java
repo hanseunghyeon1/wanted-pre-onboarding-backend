@@ -16,7 +16,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/companies")
+@RequestMapping("/employments")
 public class EmploymentController {
 
     private final EmploymentService employmentService;
