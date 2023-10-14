@@ -1,13 +1,17 @@
 package com.example.preassignment.company.controller;
 
 import com.example.preassignment.company.dto.request.EmploymentRegistRequestDto;
+import com.example.preassignment.company.dto.request.EmploymentSearchRequestDto;
 import com.example.preassignment.company.dto.request.EmploymentUpdateRequestDto;
 import com.example.preassignment.company.dto.response.EmploymentRegistResponseDto;
+import com.example.preassignment.company.dto.response.EmploymentSearchListResponseDto;
 import com.example.preassignment.company.service.EmploymentService;
 import java.net.URI;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -47,5 +51,12 @@ public class EmploymentController {
     public ResponseEntity<Void> delete(@PathVariable Long employmentId){
         employmentService.delete(employmentId);
         return ResponseEntity.ok().build();
+    }
+
+    @GetMapping
+    public ResponseEntity<EmploymentSearchListResponseDto> getEmploymentList(EmploymentSearchRequestDto requestDto){
+        System.out.println(requestDto.getSearch());
+        EmploymentSearchListResponseDto list = employmentService.searchEmploymentList(requestDto);
+        return ResponseEntity.ok(list);
     }
 }
