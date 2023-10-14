@@ -8,11 +8,11 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class CompanyRegistResponseDto {
-    private UUID companyId;
+public class EmploymentRegistResponseDto {
+    private Long companyId;
 
     @Builder
-    public CompanyRegistResponseDto(UUID companyId) {
+    public EmploymentRegistResponseDto(Long companyId) {
         this.companyId = companyId;
     }
 }

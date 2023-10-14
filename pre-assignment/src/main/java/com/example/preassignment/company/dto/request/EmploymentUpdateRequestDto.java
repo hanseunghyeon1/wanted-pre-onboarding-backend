@@ -4,8 +4,8 @@ import java.util.UUID;
 import lombok.Getter;
 
 @Getter
-public class CompanyUpdateRequestDto {
-    private UUID companyId;
+public class EmploymentUpdateRequestDto {
+    private Long companyId;
 
     private String position;
 
