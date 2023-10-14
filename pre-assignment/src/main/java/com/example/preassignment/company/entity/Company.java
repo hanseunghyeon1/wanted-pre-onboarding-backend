@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -23,16 +24,16 @@ public class Company {
     @Column(columnDefinition = "BINARY(16)")
     private UUID companyId;
 
-    @NotBlank
+    @NotNull
     private String position;
 
-    @NotBlank
+    @NotNull
     private int reward;
 
-    @NotBlank
+    @NotNull
     private String content;
 
-    @NotBlank
+    @NotNull
     private String tech;
 
     @Builder
