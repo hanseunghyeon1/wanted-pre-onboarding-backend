@@ -21,10 +21,16 @@ public class Company {
     @Column(columnDefinition = "BINARY(16)")
     private UUID companyId;
 
-    private String info;
+    private String name;
+
+    private String nation;
+
+    private String region;
 
     @Builder
-    public Company(String info) {
-        this.info = info;
+    public Company(String name, String nation, String region) {
+        this.name = name;
+        this.nation = nation;
+        this.region = region;
     }
 }

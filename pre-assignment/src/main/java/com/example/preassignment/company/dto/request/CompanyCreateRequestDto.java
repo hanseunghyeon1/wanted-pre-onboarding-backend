@@ -4,5 +4,9 @@ import lombok.Getter;
 
 @Getter
 public class CompanyCreateRequestDto {
-    private String info;
+    private String name;
+
+    private String nation;
+
+    private String region;
 }

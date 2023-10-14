@@ -14,6 +14,10 @@ public class CompanyService {
 
     @Transactional
     public void create(CompanyCreateRequestDto requestDto){
-        companyRepository.save(Company.builder().info(requestDto.getInfo()).build());
+        companyRepository.save(Company.builder()
+                .name(requestDto.getName())
+                .nation(requestDto.getNation())
+                .region(requestDto.getRegion())
+            .build());
     }
 }
