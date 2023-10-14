@@ -21,7 +21,7 @@ public class EmploymentService {
     @Transactional
     public EmploymentRegistResponseDto regist(EmploymentRegistRequestDto requestDto){
         Company company = companyRepository.findById(requestDto.getCompanyId())
-            .orElseThrow(() -> new NullPointerException("id에 맞는 company가 없음"));
+            .orElseThrow(() -> new NullPointerException("id에 맞는 회사가 없음"));
 
         Employment employmentBuilder = Employment.builder()
             .position(requestDto.getPosition())
@@ -40,8 +40,8 @@ public class EmploymentService {
 
     @Transactional
     public void update(EmploymentUpdateRequestDto requestDto){
-        Employment employment = employmentRepository.findById(requestDto.getCompanyId())
-            .orElseThrow(() -> new NullPointerException("id에 맞는 company가 없음"));
+        Employment employment = employmentRepository.findById(requestDto.getEmploymentId())
+            .orElseThrow(() -> new NullPointerException("id에 맞는 공고가 없음"));
 
         employment.employmentUpdate(requestDto);
     }

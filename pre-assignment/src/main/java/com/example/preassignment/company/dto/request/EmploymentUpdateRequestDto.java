@@ -5,7 +5,7 @@ import lombok.Getter;
 
 @Getter
 public class EmploymentUpdateRequestDto {
-    private Long companyId;
+    private Long employmentId;
 
     private String position;
 
