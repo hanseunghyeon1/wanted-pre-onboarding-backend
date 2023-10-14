@@ -7,6 +7,7 @@ import com.example.preassignment.company.entity.Company;
 import com.example.preassignment.company.entity.Employment;
 import com.example.preassignment.company.repository.CompanyRepository;
 import com.example.preassignment.company.repository.EmploymentRepository;
+import java.util.List;
 import javax.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -44,5 +45,10 @@ public class EmploymentService {
             .orElseThrow(() -> new NullPointerException("id에 맞는 공고가 없음"));
 
         employment.employmentUpdate(requestDto);
+    }
+
+    @Transactional
+    public void delete(Long employmentIds){
+        employmentRepository.deleteById(employmentIds);
     }
 }
