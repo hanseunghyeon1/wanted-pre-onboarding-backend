@@ -1,15 +1,20 @@
 package com.example.preassignment.company.service;
 
+import com.example.preassignment.common.PagingUtil;
 import com.example.preassignment.company.dto.request.EmploymentRegistRequestDto;
+import com.example.preassignment.company.dto.request.EmploymentSearchRequestDto;
 import com.example.preassignment.company.dto.request.EmploymentUpdateRequestDto;
 import com.example.preassignment.company.dto.response.EmploymentRegistResponseDto;
+import com.example.preassignment.company.dto.response.EmploymentSearchListResponseDto;
+import com.example.preassignment.company.dto.response.EmploymentSearchResponseDto;
 import com.example.preassignment.company.entity.Company;
 import com.example.preassignment.company.entity.Employment;
 import com.example.preassignment.company.repository.CompanyRepository;
 import com.example.preassignment.company.repository.EmploymentRepository;
-import java.util.List;
 import javax.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -50,5 +55,14 @@ public class EmploymentService {
     @Transactional
     public void delete(Long employmentIds){
         employmentRepository.deleteById(employmentIds);
+    }
+
+    public EmploymentSearchListResponseDto searchEmploymentList(EmploymentSearchRequestDto requestDto){
+        Page<EmploymentSearchResponseDto> list = employmentRepository.searchEmployment(requestDto,
+            PageRequest.of(requestDto.getPage(), requestDto.getPageSize()));
+        return EmploymentSearchListResponseDto.builder()
+            .pagingUtil(new PagingUtil(list.getTotalElements(), list.getTotalPages(), list.getNumber(), list.getSize()))
+            .employmentList(list.toList())
+            .build();
     }
 }
